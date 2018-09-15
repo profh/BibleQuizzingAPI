@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quiz_year: one
+  book: MyString
+
+two:
+  quiz_year: two
+  book: MyString

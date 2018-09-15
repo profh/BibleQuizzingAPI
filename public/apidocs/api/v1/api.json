@@ -1,0 +1,48 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://localhost:3000",
+  "resourcePath": "api",
+  "apis": [
+    {
+      "path": "/v1/questions.json",
+      "operations": [
+        {
+          "summary": "Fetches Questions",
+          "notes": "This lists 25 or 200 questions based on whether parameters are given, in either random or sequential order. You may choose to use either the corresponding section id or all 3 of the other parameters to find questions.",
+          "parameters": [
+
+          ],
+          "nickname": "Api::V1::Api#get_questions",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/v1/sections.json",
+      "operations": [
+        {
+          "summary": "Fetches Sections",
+          "notes": "This endpoint lists all sections that are available in the chosen book, or active in the system.",
+          "parameters": [
+
+          ],
+          "nickname": "Api::V1::Api#get_sections",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/v1/books.json",
+      "operations": [
+        {
+          "summary": "Fetches Books",
+          "notes": "This lists all books that are active for Quizzing",
+          "nickname": "Api::V1::Api#get_books",
+          "method": "get"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}

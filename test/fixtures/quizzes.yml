@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  filename: MyString
+  event: one
+  question_categories: MyString
+  interrogative: 1
+  finish_the_verse: 1
+  quote: 1
+  reference: 1
+  multiple_answer: 1
+  situation: 1
+  event_quiz_number: 1
+
+two:
+  filename: MyString
+  event: two
+  question_categories: MyString
+  interrogative: 1
+  finish_the_verse: 1
+  quote: 1
+  reference: 1
+  multiple_answer: 1
+  situation: 1
+  event_quiz_number: 1

@@ -1,0 +1,2 @@
+class QuizYear < ApplicationRecord
+end

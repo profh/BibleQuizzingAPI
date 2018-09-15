@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  num_quizzes: 1
+  filename: MyString
+  user: one
+  quiz_level: 1
+  percent_review: 9.99
+  date: 2018-07-24
+
+two:
+  title: MyString
+  num_quizzes: 1
+  filename: MyString
+  user: two
+  quiz_level: 1
+  percent_review: 9.99
+  date: 2018-07-24
