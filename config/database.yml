@@ -80,7 +80,8 @@ test:
 #
 production:
   <<: *default
-  host: cmaquizmaster.org
+  # host: cmaquizmaster.org
+  host: localhost
   database: <%= SETTINGS[:production_database] %>
   username: <%= SETTINGS[:db_user] %>
   password: <%= SETTINGS[:db_password] %>

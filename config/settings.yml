@@ -4,5 +4,5 @@ session_name: '_quizapi_session'
 
 # database configurations
 production_database: 'cma'
-db_user: 'quizmaster'
-db_password: 'david-dom-derin-vidur'
+db_user: 'dusty'
+db_password: 'im_not_old'
