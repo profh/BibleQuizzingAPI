@@ -12,13 +12,27 @@ class Api::V1::ApiController < ApplicationController
 
   def get_questions
     if params[:section_id].present?
-        render json: Question.in_section(params[:section_id]).order("section_id").limit(20)
+        questions = Question.for_section(params[:section_id])
+    elsif params[:starting].present? && params[:ending].present?
+        questions = Question.for_section_range(params[:starting], params[:ending])
     elsif params[:book].present?
-        render json: Question.in_book(params[:book])
+        questions = Question.for_book(params[:book])
     else
-        # render json: Question.order("RANDOM()").limit(1)
-        render json: Question.all.to_a.sample
+        questions = Question.all.to_a
     end
+
+    render json: questions
+  end
+  
+  swagger_api :get_questions_for_year do
+    summary "Fetches Questions"
+    notes "This lists all the questions from the current quizzing year."
+  end
+
+  def get_questions_for_year
+    questions = Question.for_current_year
+
+    render json: questions
   end
 
   swagger_api :get_sections do
@@ -45,6 +59,29 @@ class Api::V1::ApiController < ApplicationController
       @books = Section.where(active: true).distinct.pluck(:book).sort
       render json: @books
   end
+
+  ####################
+
+  include Filterable
+
+  # BOOLEAN_FILTERING_PARAMS = [[:approved, :unapproved],[:district, :local]]
+  # BOOLEAN_FILTERING_PARAMS = [:refs, :memory, :int_only, :ma_only, :int_and_ma]
+  PARAM_FILTERING_PARAMS = [:refs, :memory, :int_only, :ma_only, :int_and_ma]
+
+  def get_questions_for_sections
+    @questions = Question.for_book("Luke").set_size(params[:limit]).all
+    @questions = param_filter(@questions, PARAM_FILTERING_PARAMS)
+    if params[:starting].present? && params[:ending].present?
+      @questions = @questions.for_chapter_range(params[:starting], params[:ending])
+    elsif params[:starting].present? && !params[:ending].present?
+      @questions = @questions.for_chapter_range(params[:starting], params[:starting])
+    else
+      @questions = @questions
+    end
+
+    render json: @questions
+  end
+
 
   private
     def question_params

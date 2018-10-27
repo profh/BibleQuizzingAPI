@@ -1,0 +1,8 @@
+# tokens and cookies configurations
+secret_key_base: '5d37dc5664baac0b3f4956e9156457c2265a1ef3ba36fb13b7c19b2702119095861f70f959ce69977ff849c938eb9db24e4bb449317a7edb6097d1eacce51cc7'
+session_name: '_quizapi_session'
+
+# database configurations
+production_database: 'cma'
+db_user: 'quizmaster'
+db_password: 'david-dom-derin-vidur'

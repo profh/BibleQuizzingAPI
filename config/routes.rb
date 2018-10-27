@@ -19,9 +19,12 @@ Rails.application.routes.draw do
     end
 
     namespace :v1 do
+      get 'year_questions/', to: 'api#get_questions_for_year', as: :get_year_questions
       get 'questions/', to: 'api#get_questions', as: :get_questions
       get 'sections/', to: 'api#get_sections', as: :get_sections
       get 'books/', to: 'api#get_books', as: :get_books
+      get 'sets/', to: 'api#get_questions_for_sections', as: :get_sets
+      
 
     end
   end

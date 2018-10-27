@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
-  database: BibleQuizAPI
-  username: profh
-  password: secret
+  host: cmaquizmaster.org
+  database: <%= SETTINGS[:production_database] %>
+  username: <%= SETTINGS[:db_user] %>
+  password: <%= SETTINGS[:db_password] %>

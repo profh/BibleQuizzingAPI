@@ -16,6 +16,11 @@ require "rails/test_unit/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# Moving configuration settings to a separate hash available throughout the application
+SETTINGS = YAML.load(File.read(File.expand_path('../settings.yml', __FILE__)))
+SETTINGS.merge! SETTINGS.fetch(Rails.env, {})
+SETTINGS.symbolize_keys!
+
 module BibleQuizAPI
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -24,6 +29,7 @@ module BibleQuizAPI
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]  # include all subdirectories
 
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.
