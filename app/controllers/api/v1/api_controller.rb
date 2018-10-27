@@ -33,7 +33,10 @@ module Api::V1
     def get_questions_for_year
       questions = Question.for_current_year
 
-      render json: questions
+      # render json: questions
+      render json: QuestionSerializer.new(questions).serialized_json
+      # Completed 200 OK in 4621ms (Views: 0.2ms | ActiveRecord: 462.2ms)
+      # Completed 200 OK in 13366ms (Views: 0.1ms | ActiveRecord: 202.2ms)
     end
 
     swagger_api :get_sections do
