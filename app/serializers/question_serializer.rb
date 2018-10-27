@@ -1,8 +1,12 @@
   class QuestionSerializer
     include FastJsonapi::ObjectSerializer
 
-    attributes :id, :text, :answer, :bcv_reference, :question_type
+    # attributes :text, :answer, :bcv_reference, :question_type
 
+
+    attribute :text
+    
+    attribute :answer
 
     attribute :bcv_reference do |object|
       "#{object.book} #{object.chapter}:#{object.verse}"

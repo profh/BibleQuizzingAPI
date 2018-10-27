@@ -21,9 +21,9 @@ class Question < ApplicationRecord
   
   def self.for_current_year
     current_year_questions = []
-    active_section_ids = Section.where(active: true).map(&:id)
+    active_section_ids = Section.where(active: true).map(&:id).sort
     active_section_ids.each do |i|
-      section_questions = Question.for_section(i).to_a
+      section_questions = Question.for_section(i).sort_by{|q| q.verse}.to_a
       current_year_questions << section_questions
     end
     
